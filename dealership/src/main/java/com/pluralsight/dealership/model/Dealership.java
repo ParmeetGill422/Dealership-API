@@ -1,34 +1,62 @@
 package com.pluralsight.dealership.model;
 
-public class Dealership {
-    private int dealershipId;
-    private String name;
-    private String address;
-    private String phone;
+import java.util.ArrayList;
+import java.util.List;
 
-    // Getters and Setters
-    public int getDealershipId() {
-        return dealershipId;
+public class Dealership {
+    private int id;
+    private String name;
+    private String location;
+    private List<Vehicle> inventory;
+
+    public Dealership() {
+        inventory = new ArrayList<>();
     }
-    public void setDealershipId(int dealershipId) {
-        this.dealershipId = dealershipId;
+
+    public Dealership(int id, String name, String location) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        this.inventory = new ArrayList<>();
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
-    public String getAddress() {
-        return address;
+
+    public String getLocation() {
+        return location;
     }
-    public void setAddress(String address) {
-        this.address = address;
+
+    public void setLocation(String location) {
+        this.location = location;
     }
-    public String getPhone() {
-        return phone;
+
+    public List<Vehicle> getInventory() {
+        return inventory;
     }
-    public void setPhone(String phone) {
-        this.phone = phone;
+
+    public void setInventory(List<Vehicle> inventory) {
+        this.inventory = inventory;
+    }
+
+    public void addVehicle(Vehicle vehicle) {
+        inventory.add(vehicle);
+    }
+
+    public void removeVehicle(Vehicle vehicle) {
+        inventory.remove(vehicle);
     }
 }

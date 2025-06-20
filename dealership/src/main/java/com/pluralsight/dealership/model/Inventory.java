@@ -1,27 +1,32 @@
 package com.pluralsight.dealership.model;
 
-public class Inventory {
-    private int inventoryId;
-    private int dealershipId;
-    private int vehicleId;
+import java.util.ArrayList;
+import java.util.List;
 
-    // Getters and Setters
-    public int getInventoryId() {
-        return inventoryId;
+public class Inventory {
+    private List<Vehicle> vehicles;
+
+    public Inventory() {
+        vehicles = new ArrayList<>();
     }
-    public void setInventoryId(int inventoryId) {
-        this.inventoryId = inventoryId;
+
+    public Inventory(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
     }
-    public int getDealershipId() {
-        return dealershipId;
+
+    public List<Vehicle> getVehicles() {
+        return vehicles;
     }
-    public void setDealershipId(int dealershipId) {
-        this.dealershipId = dealershipId;
+
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
     }
-    public int getVehicleId() {
-        return vehicleId;
+
+    public void addVehicle(Vehicle vehicle) {
+        vehicles.add(vehicle);
     }
-    public void setVehicleId(int vehicleId) {
-        this.vehicleId = vehicleId;
+
+    public void removeVehicle(Vehicle vehicle) {
+        vehicles.remove(vehicle);
     }
 }

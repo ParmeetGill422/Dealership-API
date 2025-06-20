@@ -1,55 +1,88 @@
 package com.pluralsight.dealership.model;
 
+import java.math.BigDecimal;
+
 public class Vehicle {
     private int vehicleId;
     private String vin;
     private String make;
     private String model;
-    private int year;
+    private Integer year;
     private String color;
-    private String price;
+    private BigDecimal price;
+    private Integer miles;
+    private String type;
 
-
+    // Getters and Setters
     public int getVehicleId() {
         return vehicleId;
     }
+
     public void setVehicleId(int vehicleId) {
         this.vehicleId = vehicleId;
     }
+
     public String getVin() {
         return vin;
     }
+
     public void setVin(String vin) {
         this.vin = vin;
     }
+
     public String getMake() {
         return make;
     }
+
     public void setMake(String make) {
         this.make = make;
     }
+
     public String getModel() {
         return model;
     }
+
     public void setModel(String model) {
         this.model = model;
     }
-    public int getYear() {
+
+    public Integer getYear() {
         return year;
     }
-    public void setYear(int year) {
+
+    public void setYear(Integer year) {
         this.year = year;
     }
+
     public String getColor() {
         return color;
     }
+
     public void setColor(String color) {
         this.color = color;
     }
-    public String getPrice() {
+
+    public BigDecimal getPrice() {
         return price;
     }
-    public void setPrice(String price) {
+
+    public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Integer getMiles() {
+        return miles;
+    }
+
+    public void setMiles(Integer miles) {
+        this.miles = miles;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

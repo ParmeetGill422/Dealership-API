@@ -3,17 +3,15 @@ package com.pluralsight.dealership.dao;
 import com.pluralsight.dealership.model.LeaseContract;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
 
-@Repository
-public class MySqlLeaseContractDao implements LeaseContractDao {
+public class JdbcLeaseContractDao implements LeaseContractDao {
 
     private final JdbcTemplate jdbcTemplate;
 
-    public MySqlLeaseContractDao(DataSource dataSource) {
+    public JdbcLeaseContractDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 

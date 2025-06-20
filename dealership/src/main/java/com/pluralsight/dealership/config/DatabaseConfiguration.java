@@ -12,7 +12,7 @@ public class DatabaseConfiguration {
     @Bean
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:5577/dealership");
+        dataSource.setUrl("jdbc:mysql://localhost:5577/cardealership");
         dataSource.setUsername("root");
         dataSource.setPassword("Pgmgjg57@");
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
