@@ -15,11 +15,6 @@ public class JdbcSalesContractDao implements SalesContractDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    @Override
-    public SalesContract getById(int id) {
-        String sql = "SELECT * FROM sales_contracts WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(SalesContract.class), id);
-    }
 
     @Override
     public void add(SalesContract contract) {
@@ -39,8 +34,20 @@ public class JdbcSalesContractDao implements SalesContractDao {
     }
 
     @Override
+    public List<SalesContract> getByVin(String vin) {
+        String sql = "SELECT * FROM sales_contracts WHERE vin = ?";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(SalesContract.class), vin);
+    }
+    @Override
     public List<SalesContract> getAll() {
         String sql = "SELECT * FROM sales_contracts";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(SalesContract.class));
     }
+    @Override
+    public void deleteByVin(String vin) {
+        String sql = "DELETE FROM sales_contracts WHERE vin = ?";
+        jdbcTemplate.update(sql, vin);
+    }
+
+
 }

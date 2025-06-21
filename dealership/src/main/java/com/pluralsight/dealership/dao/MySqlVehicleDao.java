@@ -61,11 +61,11 @@ public class MySqlVehicleDao implements VehicleDao {
             params.add("%" + color + "%");
         }
         if (minMiles != null) {
-            sql.append(" AND miles >= ?");
+            sql.append(" AND odometer >= ?");
             params.add(minMiles);
         }
         if (maxMiles != null) {
-            sql.append(" AND miles <= ?");
+            sql.append(" AND odometer <= ?");
             params.add(maxMiles);
         }
         if (type != null && !type.isEmpty()) {
@@ -78,7 +78,7 @@ public class MySqlVehicleDao implements VehicleDao {
 
     @Override
     public void add(Vehicle vehicle) {
-        String sql = "INSERT INTO vehicles (vin, make, model, year, color, price, miles, type) " +
+        String sql = "INSERT INTO vehicles (vin, make, model, year, color, price, odometer, type) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql,
                 vehicle.getVin(),
@@ -87,29 +87,28 @@ public class MySqlVehicleDao implements VehicleDao {
                 vehicle.getYear(),
                 vehicle.getColor(),
                 vehicle.getPrice(),
-                vehicle.getMiles(),
+                vehicle.getOdometer(),
                 vehicle.getType());
     }
 
     @Override
     public void update(Vehicle vehicle) {
-        String sql = "UPDATE vehicles SET vin = ?, make = ?, model = ?, year = ?, color = ?, price = ?, miles = ?, type = ? " +
-                "WHERE vehicle_id = ?";
+        String sql = "UPDATE vehicles SET make = ?, model = ?, year = ?, color = ?, price = ?, odometer = ?, type = ? WHERE vin = ?\n";
         jdbcTemplate.update(sql,
-                vehicle.getVin(),
                 vehicle.getMake(),
                 vehicle.getModel(),
                 vehicle.getYear(),
                 vehicle.getColor(),
                 vehicle.getPrice(),
-                vehicle.getMiles(),
+                vehicle.getOdometer(),
                 vehicle.getType(),
-                vehicle.getVehicleId());
+                vehicle.getVin());
+
     }
 
     @Override
-    public void delete(int id) {
-        String sql = "DELETE FROM vehicles WHERE vehicle_id = ?";
-        jdbcTemplate.update(sql, id);
+    public void delete(String vin) {
+        String sql = "DELETE FROM vehicles WHERE vin = ?";
+        jdbcTemplate.update(sql, vin);
     }
 }

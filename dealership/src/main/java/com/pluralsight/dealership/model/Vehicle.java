@@ -10,7 +10,7 @@ public class Vehicle {
     private Integer year;
     private String color;
     private BigDecimal price;
-    private Integer miles;
+    private Integer odometer;
     private String type;
 
     // Getters and Setters
@@ -70,12 +70,12 @@ public class Vehicle {
         this.price = price;
     }
 
-    public Integer getMiles() {
-        return miles;
+    public Integer getOdometer() {
+        return odometer;
     }
 
-    public void setMiles(Integer miles) {
-        this.miles = miles;
+    public void setOdometer(Integer odometer) {
+        this.odometer = odometer;
     }
 
     public String getType() {
