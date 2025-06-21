@@ -8,41 +8,66 @@ public class LeaseContract {
     private String vin;
     private String customerName;
     private String customerEmail;
-    private BigDecimal salesTax;
-    private BigDecimal recordingFee;
-    private BigDecimal processingFee;
+    private BigDecimal leaseFee;       // add this
     private BigDecimal totalPrice;
     private BigDecimal monthlyPayment;
-    private LocalDate dateLeased;
+    private LocalDate endDate;          // add this
 
-    // Getters and setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    // getters and setters for all fields
 
-    public String getVin() { return vin; }
-    public void setVin(String vin) { this.vin = vin; }
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getCustomerName() { return customerName; }
-    public void setCustomerName(String customerName) { this.customerName = customerName; }
+    public String getVin() {
+        return vin;
+    }
+    public void setVin(String vin) {
+        this.vin = vin;
+    }
 
-    public String getCustomerEmail() { return customerEmail; }
-    public void setCustomerEmail(String customerEmail) { this.customerEmail = customerEmail; }
+    public String getCustomerName() {
+        return customerName;
+    }
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
 
-    public BigDecimal getSalesTax() { return salesTax; }
-    public void setSalesTax(BigDecimal salesTax) { this.salesTax = salesTax; }
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
+    }
 
-    public BigDecimal getRecordingFee() { return recordingFee; }
-    public void setRecordingFee(BigDecimal recordingFee) { this.recordingFee = recordingFee; }
+    public BigDecimal getLeaseFee() {
+        return leaseFee;
+    }
+    public void setLeaseFee(BigDecimal leaseFee) {
+        this.leaseFee = leaseFee;
+    }
 
-    public BigDecimal getProcessingFee() { return processingFee; }
-    public void setProcessingFee(BigDecimal processingFee) { this.processingFee = processingFee; }
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
-    public BigDecimal getTotalPrice() { return totalPrice; }
-    public void setTotalPrice(BigDecimal totalPrice) { this.totalPrice = totalPrice; }
+    public BigDecimal getMonthlyPayment() {
+        return monthlyPayment;
+    }
+    public void setMonthlyPayment(BigDecimal monthlyPayment) {
+        this.monthlyPayment = monthlyPayment;
+    }
 
-    public BigDecimal getMonthlyPayment() { return monthlyPayment; }
-    public void setMonthlyPayment(BigDecimal monthlyPayment) { this.monthlyPayment = monthlyPayment; }
-
-    public LocalDate getDateLeased() { return dateLeased; }
-    public void setDateLeased(LocalDate dateLeased) { this.dateLeased = dateLeased; }
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
 }

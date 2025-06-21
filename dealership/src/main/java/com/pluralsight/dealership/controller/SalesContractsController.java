@@ -1,9 +1,8 @@
 package com.pluralsight.dealership.controller;
-
+import java.util.List;
 import com.pluralsight.dealership.dao.SalesContractDao;
 import com.pluralsight.dealership.model.SalesContract;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,20 +16,23 @@ public class SalesContractsController {
         this.salesContractDao = salesContractDao;
     }
 
-    // GET by ID
-    @GetMapping("/{id}")
-    public ResponseEntity<SalesContract> getById(@PathVariable int id) {
-        SalesContract contract = salesContractDao.getById(id);
-        if (contract == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(contract);
+    @GetMapping("/vin/{vin}")
+    public List<SalesContract> getByVin(@PathVariable String vin) {
+        return salesContractDao.getByVin(vin);
     }
 
-    // POST new contract
     @PostMapping
-    public ResponseEntity<Void> add(@RequestBody SalesContract contract) {
+    public void add(@RequestBody SalesContract contract) {
         salesContractDao.add(contract);
-        return ResponseEntity.ok().build();
     }
+    @GetMapping
+    public List<SalesContract> getAll() {
+        return salesContractDao.getAll();
+    }
+    @DeleteMapping("/vin/{vin}")
+    public void deleteByVin(@PathVariable String vin) {
+        salesContractDao.deleteByVin(vin);
+    }
+
+
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface LeaseContractDao {
     LeaseContract getById(int id);
-    void add(LeaseContract contract);
     List<LeaseContract> getAll();
+    void add(LeaseContract contract);
+    void deleteByVin(String vin);
 }

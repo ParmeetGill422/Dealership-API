@@ -19,11 +19,7 @@ public class VehicleController {
         this.vehicleDao = vehicleDao;
     }
 
-    @GetMapping("/{id}")
-    public Vehicle getVehicleById(@PathVariable int id) {
-        return vehicleDao.getById(id);
-    }
-
+    // GET with filters via query params
     @GetMapping
     public List<Vehicle> searchVehicles(
             @RequestParam(required = false) BigDecimal minPrice,
@@ -40,19 +36,22 @@ public class VehicleController {
         return vehicleDao.search(minPrice, maxPrice, make, model, minYear, maxYear, color, minMiles, maxMiles, type);
     }
 
+    // POST to add vehicle
     @PostMapping
     public void addVehicle(@RequestBody Vehicle vehicle) {
         vehicleDao.add(vehicle);
     }
 
-    @PutMapping("/{id}")
-    public void updateVehicle(@PathVariable int id, @RequestBody Vehicle vehicle) {
-        vehicle.setVehicleId(id);
+    // PUT to update vehicle
+    @PutMapping("/{vin}")
+    public void updateVehicle(@PathVariable String vin, @RequestBody Vehicle vehicle) {
+        vehicle.setVin(vin);
         vehicleDao.update(vehicle);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteVehicle(@PathVariable int id) {
-        vehicleDao.delete(id);
+    // DELETE vehicle
+    @DeleteMapping("/{vin}")
+    public void deleteVehicle(@PathVariable String vin) {
+        vehicleDao.delete(vin);
     }
 }

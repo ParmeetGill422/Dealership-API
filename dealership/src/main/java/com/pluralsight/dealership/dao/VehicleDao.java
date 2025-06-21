@@ -12,5 +12,5 @@ public interface VehicleDao {
                          Integer minMiles, Integer maxMiles, String type);
     void add(Vehicle vehicle);
     void update(Vehicle vehicle);
-    void delete(int id);
+    void delete(String vin);
 }

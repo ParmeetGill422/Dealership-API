@@ -3,8 +3,9 @@ package com.pluralsight.dealership.controller;
 import com.pluralsight.dealership.dao.LeaseContractDao;
 import com.pluralsight.dealership.model.LeaseContract;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/lease-contracts")
@@ -17,20 +18,23 @@ public class LeaseContractsController {
         this.leaseContractDao = leaseContractDao;
     }
 
-    // GET lease contract by ID
     @GetMapping("/{id}")
-    public ResponseEntity<LeaseContract> getById(@PathVariable int id) {
-        LeaseContract contract = leaseContractDao.getById(id);
-        if (contract == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(contract);
+    public LeaseContract getById(@PathVariable int id) {
+        return leaseContractDao.getById(id);
     }
 
-    // POST new lease contract
+    @GetMapping
+    public List<LeaseContract> getAll() {
+        return leaseContractDao.getAll();
+    }
+
     @PostMapping
-    public ResponseEntity<Void> add(@RequestBody LeaseContract contract) {
+    public void add(@RequestBody LeaseContract contract) {
         leaseContractDao.add(contract);
-        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/vin/{vin}")
+    public void deleteByVin(@PathVariable String vin) {
+        leaseContractDao.deleteByVin(vin);
     }
 }
